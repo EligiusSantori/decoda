@@ -34,10 +34,10 @@ class BlockFilter extends AbstractFilter {
             'displayType' => Decoda::TYPE_BLOCK,
             'allowedTypes' => Decoda::TYPE_BOTH,
             'attributes' => array(
-                'default' => array('/^(?:left|center|right|justify)$/i', 'align-{default}')
+                'default' => array('/^(?:left|center|right|justify)$/i', 'text-align: {default}')
             ),
             'mapAttributes' => array(
-                'default' => 'class'
+                'default' => 'style'
             )
         ),
         'left' => array(
@@ -45,7 +45,7 @@ class BlockFilter extends AbstractFilter {
             'displayType' => Decoda::TYPE_BLOCK,
             'allowedTypes' => Decoda::TYPE_BOTH,
             'htmlAttributes' => array(
-                'class' => 'align-left'
+                'style' => 'text-align: left',
             )
         ),
         'right' => array(
@@ -53,7 +53,7 @@ class BlockFilter extends AbstractFilter {
             'displayType' => Decoda::TYPE_BLOCK,
             'allowedTypes' => Decoda::TYPE_BOTH,
             'htmlAttributes' => array(
-                'class' => 'align-right'
+                'style' => 'text-align: right',
             )
         ),
         'center' => array(
@@ -61,7 +61,7 @@ class BlockFilter extends AbstractFilter {
             'displayType' => Decoda::TYPE_BLOCK,
             'allowedTypes' => Decoda::TYPE_BOTH,
             'htmlAttributes' => array(
-                'class' => 'align-center'
+                'style' => 'text-align: center',
             )
         ),
         'justify' => array(
@@ -69,7 +69,7 @@ class BlockFilter extends AbstractFilter {
             'displayType' => Decoda::TYPE_BLOCK,
             'allowedTypes' => Decoda::TYPE_BOTH,
             'htmlAttributes' => array(
-                'class' => 'align-justify'
+                'style' => 'text-align: justify',
             )
         ),
         'float' => array(
@@ -77,10 +77,10 @@ class BlockFilter extends AbstractFilter {
             'displayType' => Decoda::TYPE_BLOCK,
             'allowedTypes' => Decoda::TYPE_BOTH,
             'attributes' => array(
-                'default' => array('/^(?:left|right|none)$/i', 'float-{default}')
+                'default' => array('/^(?:left|right|none)$/i', 'float: {default}')
             ),
             'mapAttributes' => array(
-                'default' => 'class'
+                'default' => 'style'
             )
         ),
         'hide' => array(
