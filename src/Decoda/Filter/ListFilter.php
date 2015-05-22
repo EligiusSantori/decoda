@@ -22,53 +22,26 @@ class ListFilter extends AbstractFilter {
      * @type array
      */
     protected $_tags = array(
-        'olist' => array(
-            'htmlTag' => 'ol',
-            'displayType' => Decoda::TYPE_BLOCK,
-            'allowedTypes' => Decoda::TYPE_BOTH,
-            'lineBreaks' => Decoda::NL_REMOVE,
-            'childrenWhitelist' => array('li', '*'),
-            'onlyTags' => true,
-            'attributes' => array(
-                'default' => array(self::LIST_TYPE, 'type-{default}')
-            ),
-            'mapAttributes' => array(
-                'default' => 'class'
-            ),
-            'htmlAttributes' => array(
-                'class' => 'decoda-olist'
-            )
-        ),
         'list' => array(
             'htmlTag' => 'ul',
             'displayType' => Decoda::TYPE_BLOCK,
             'allowedTypes' => Decoda::TYPE_BOTH,
             'lineBreaks' => Decoda::NL_REMOVE,
-            'childrenWhitelist' => array('li', '*'),
+            'childrenWhitelist' => array('*'),
             'onlyTags' => true,
-            'attributes' => array(
-                'default' => array(self::LIST_TYPE, 'type-{default}')
-            ),
-            'mapAttributes' => array(
-                'default' => 'class'
-            ),
-            'htmlAttributes' => array(
-                'class' => 'decoda-list'
-            )
-        ),
-        'li' => array(
-            'htmlTag' => 'li',
-            'displayType' => Decoda::TYPE_BLOCK,
-            'allowedTypes' => Decoda::TYPE_BOTH,
-            'parent' => array('olist', 'list')
         ),
         '*' => array(
             'htmlTag' => 'li',
             'displayType' => Decoda::TYPE_BLOCK,
             'allowedTypes' => Decoda::TYPE_BOTH,
-            'childrenBlacklist' => array('olist', 'list', 'li'),
-            'parent' => array('olist', 'list')
+            'childrenBlacklist' => array('list'),
+            'parent' => array('list')
         )
     );
 
+    public function listTag(array $tag, $content) {
+        if(strpos($tag['text'], 'list=1') !== false)
+            $tag['attributes']['style'] = 'list-style-type: decimal';
+        return array($tag, $content);
+    }
 }
